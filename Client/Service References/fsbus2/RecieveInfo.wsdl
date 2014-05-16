@@ -1,0 +1,1680 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:ns="http://services" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ax21="http://exception.its.com/xsd" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ns1="http://org.apache.axis2/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://services" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>RecieveInfo</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema xmlns:ax22="http://services" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://exception.its.com/xsd">
+      <xs:import namespace="http://services" />
+      <xs:complexType name="ITSException">
+        <xs:complexContent mixed="false">
+          <xs:extension base="ax22:Exception">
+            <xs:sequence>
+              <xs:element minOccurs="0" name="rawCause" nillable="true" type="xs:anyType" />
+              <xs:element minOccurs="0" name="rawITSException" nillable="true" type="ax21:ITSException" />
+            </xs:sequence>
+          </xs:extension>
+        </xs:complexContent>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ax23="http://exception.its.com/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://services">
+      <xs:import namespace="http://exception.its.com/xsd" />
+      <xs:element name="checkuser_password">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="checkuser_passwordResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:anyType" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:complexType name="Exception">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Exception" nillable="true" type="xs:anyType" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ITSException">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="ITSException" nillable="true" type="ax23:ITSException" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteTBusVehMdtInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="registrationno" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="registrationnocolor" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteTBusVehMdtInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateTBusVehMdtInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="mdt" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="registrationno" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="registrationnocolor" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="m1" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ia1" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ic1" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="mdtKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="operatorcode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="devicecode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="factorycode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="simno" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="terminaltype" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateTBusVehMdtInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteCompanyIncome">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteCompanyIncomeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deletePlanArranges">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deletePlanArrangesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteRealArranges">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteRealArrangesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteRealArrangesChange">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteRealArrangesChangeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteTrafficPoliceTicket">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteTrafficPoliceTicketResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteVehicleRefuel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteVehicleRefuelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteVehicleRepair">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="deleteVehicleRepairResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveCompanyIncome">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="incomeFund" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="incomeDate" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveCompanyIncomeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receivePlanArranges">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lineCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceRuns" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="startStationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="outStationTime" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="endStationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="workDate" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receivePlanArrangesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveRealArranges">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lineCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceRuns" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="firstOrLast" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="inStationTime" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="outStationTime" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="stationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="workDate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="getOnNum" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="getOutNum" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveRealArrangesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveRealArrangesChange">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lineCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="changeStationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="changeType" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="workDate" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveRealArrangesChangeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveTBusVehMdtInfo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="mdt" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="registrationno" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="registrationnocolor" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="m1" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ia1" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ic1" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="mdtKey" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="operatorcode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="devicecode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="factorycode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="simno" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="terminaltype" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveTBusVehMdtInfoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveTrafficPoliceTicket">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ticketType" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="driverName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ticketDate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ticketPattern" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ticketResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveTrafficPoliceTicketResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveVehicleRefuel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="refuelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="refuelDate" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveVehicleRefuelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveVehicleRepair">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maintainDateIn" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maintainDateOut" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maintainDesc" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="receiveVehicleRepairResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateCompanyIncome">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="incomeFund" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="incomeDate" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateCompanyIncomeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatePlanArranges">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lineCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceRuns" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="startStationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="outStationTime" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="endStationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="workDate" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updatePlanArrangesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateRealArranges">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lineCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="serviceRuns" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="firstOrLast" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="inStationTime" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="outStationTime" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="stationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="workDate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="getOnNum" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="getOutNum" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateRealArrangesResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateRealArrangesChange">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="lineCode" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="changeStationId" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="changeType" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="workDate" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateRealArrangesChangeResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateTrafficPoliceTicket">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ticketType" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="driverName" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ticketDate" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ticketPattern" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="ticketResult" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateTrafficPoliceTicketResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateVehicleRefuel">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="refuelNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="refuelDate" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateVehicleRefuelResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateVehicleRepair">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="uuid" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="username" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pwd" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="vehicleNumber" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maintainDateIn" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maintainDateOut" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="maintainDesc" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="updateVehicleRepairResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="main">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="args" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="deleteVehicleRepairRequest">
+    <wsdl:part name="parameters" element="ns:deleteVehicleRepair" />
+  </wsdl:message>
+  <wsdl:message name="deleteVehicleRepairResponse">
+    <wsdl:part name="parameters" element="ns:deleteVehicleRepairResponse" />
+  </wsdl:message>
+  <wsdl:message name="ITSException">
+    <wsdl:part name="parameters" element="ns:ITSException" />
+  </wsdl:message>
+  <wsdl:message name="deleteTrafficPoliceTicketRequest">
+    <wsdl:part name="parameters" element="ns:deleteTrafficPoliceTicket" />
+  </wsdl:message>
+  <wsdl:message name="deleteTrafficPoliceTicketResponse">
+    <wsdl:part name="parameters" element="ns:deleteTrafficPoliceTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateVehicleRefuelRequest">
+    <wsdl:part name="parameters" element="ns:updateVehicleRefuel" />
+  </wsdl:message>
+  <wsdl:message name="updateVehicleRefuelResponse">
+    <wsdl:part name="parameters" element="ns:updateVehicleRefuelResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteCompanyIncomeRequest">
+    <wsdl:part name="parameters" element="ns:deleteCompanyIncome" />
+  </wsdl:message>
+  <wsdl:message name="deleteCompanyIncomeResponse">
+    <wsdl:part name="parameters" element="ns:deleteCompanyIncomeResponse" />
+  </wsdl:message>
+  <wsdl:message name="receiveTBusVehMdtInfoRequest">
+    <wsdl:part name="parameters" element="ns:receiveTBusVehMdtInfo" />
+  </wsdl:message>
+  <wsdl:message name="receiveTBusVehMdtInfoResponse">
+    <wsdl:part name="parameters" element="ns:receiveTBusVehMdtInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateVehicleRepairRequest">
+    <wsdl:part name="parameters" element="ns:updateVehicleRepair" />
+  </wsdl:message>
+  <wsdl:message name="updateVehicleRepairResponse">
+    <wsdl:part name="parameters" element="ns:updateVehicleRepairResponse" />
+  </wsdl:message>
+  <wsdl:message name="receiveVehicleRefuelRequest">
+    <wsdl:part name="parameters" element="ns:receiveVehicleRefuel" />
+  </wsdl:message>
+  <wsdl:message name="receiveVehicleRefuelResponse">
+    <wsdl:part name="parameters" element="ns:receiveVehicleRefuelResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteVehicleRefuelRequest">
+    <wsdl:part name="parameters" element="ns:deleteVehicleRefuel" />
+  </wsdl:message>
+  <wsdl:message name="deleteVehicleRefuelResponse">
+    <wsdl:part name="parameters" element="ns:deleteVehicleRefuelResponse" />
+  </wsdl:message>
+  <wsdl:message name="mainRequest">
+    <wsdl:part name="parameters" element="ns:main" />
+  </wsdl:message>
+  <wsdl:message name="mainResponse" />
+  <wsdl:message name="deleteTBusVehMdtInfoRequest">
+    <wsdl:part name="parameters" element="ns:deleteTBusVehMdtInfo" />
+  </wsdl:message>
+  <wsdl:message name="deleteTBusVehMdtInfoResponse">
+    <wsdl:part name="parameters" element="ns:deleteTBusVehMdtInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteRealArrangesRequest">
+    <wsdl:part name="parameters" element="ns:deleteRealArranges" />
+  </wsdl:message>
+  <wsdl:message name="deleteRealArrangesResponse">
+    <wsdl:part name="parameters" element="ns:deleteRealArrangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="receiveVehicleRepairRequest">
+    <wsdl:part name="parameters" element="ns:receiveVehicleRepair" />
+  </wsdl:message>
+  <wsdl:message name="receiveVehicleRepairResponse">
+    <wsdl:part name="parameters" element="ns:receiveVehicleRepairResponse" />
+  </wsdl:message>
+  <wsdl:message name="updatePlanArrangesRequest">
+    <wsdl:part name="parameters" element="ns:updatePlanArranges" />
+  </wsdl:message>
+  <wsdl:message name="updatePlanArrangesResponse">
+    <wsdl:part name="parameters" element="ns:updatePlanArrangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="receiveRealArrangesChangeRequest">
+    <wsdl:part name="parameters" element="ns:receiveRealArrangesChange" />
+  </wsdl:message>
+  <wsdl:message name="receiveRealArrangesChangeResponse">
+    <wsdl:part name="parameters" element="ns:receiveRealArrangesChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="checkuser_passwordRequest">
+    <wsdl:part name="parameters" element="ns:checkuser_password" />
+  </wsdl:message>
+  <wsdl:message name="checkuser_passwordResponse">
+    <wsdl:part name="parameters" element="ns:checkuser_passwordResponse" />
+  </wsdl:message>
+  <wsdl:message name="deletePlanArrangesRequest">
+    <wsdl:part name="parameters" element="ns:deletePlanArranges" />
+  </wsdl:message>
+  <wsdl:message name="deletePlanArrangesResponse">
+    <wsdl:part name="parameters" element="ns:deletePlanArrangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateTBusVehMdtInfoRequest">
+    <wsdl:part name="parameters" element="ns:updateTBusVehMdtInfo" />
+  </wsdl:message>
+  <wsdl:message name="updateTBusVehMdtInfoResponse">
+    <wsdl:part name="parameters" element="ns:updateTBusVehMdtInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateCompanyIncomeRequest">
+    <wsdl:part name="parameters" element="ns:updateCompanyIncome" />
+  </wsdl:message>
+  <wsdl:message name="updateCompanyIncomeResponse">
+    <wsdl:part name="parameters" element="ns:updateCompanyIncomeResponse" />
+  </wsdl:message>
+  <wsdl:message name="deleteRealArrangesChangeRequest">
+    <wsdl:part name="parameters" element="ns:deleteRealArrangesChange" />
+  </wsdl:message>
+  <wsdl:message name="deleteRealArrangesChangeResponse">
+    <wsdl:part name="parameters" element="ns:deleteRealArrangesChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateTrafficPoliceTicketRequest">
+    <wsdl:part name="parameters" element="ns:updateTrafficPoliceTicket" />
+  </wsdl:message>
+  <wsdl:message name="updateTrafficPoliceTicketResponse">
+    <wsdl:part name="parameters" element="ns:updateTrafficPoliceTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="receiveCompanyIncomeRequest">
+    <wsdl:part name="parameters" element="ns:receiveCompanyIncome" />
+  </wsdl:message>
+  <wsdl:message name="receiveCompanyIncomeResponse">
+    <wsdl:part name="parameters" element="ns:receiveCompanyIncomeResponse" />
+  </wsdl:message>
+  <wsdl:message name="receiveRealArrangesRequest">
+    <wsdl:part name="parameters" element="ns:receiveRealArranges" />
+  </wsdl:message>
+  <wsdl:message name="receiveRealArrangesResponse">
+    <wsdl:part name="parameters" element="ns:receiveRealArrangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRealArrangesChangeRequest">
+    <wsdl:part name="parameters" element="ns:updateRealArrangesChange" />
+  </wsdl:message>
+  <wsdl:message name="updateRealArrangesChangeResponse">
+    <wsdl:part name="parameters" element="ns:updateRealArrangesChangeResponse" />
+  </wsdl:message>
+  <wsdl:message name="updateRealArrangesRequest">
+    <wsdl:part name="parameters" element="ns:updateRealArranges" />
+  </wsdl:message>
+  <wsdl:message name="updateRealArrangesResponse">
+    <wsdl:part name="parameters" element="ns:updateRealArrangesResponse" />
+  </wsdl:message>
+  <wsdl:message name="receiveTrafficPoliceTicketRequest">
+    <wsdl:part name="parameters" element="ns:receiveTrafficPoliceTicket" />
+  </wsdl:message>
+  <wsdl:message name="receiveTrafficPoliceTicketResponse">
+    <wsdl:part name="parameters" element="ns:receiveTrafficPoliceTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="receivePlanArrangesRequest">
+    <wsdl:part name="parameters" element="ns:receivePlanArranges" />
+  </wsdl:message>
+  <wsdl:message name="receivePlanArrangesResponse">
+    <wsdl:part name="parameters" element="ns:receivePlanArrangesResponse" />
+  </wsdl:message>
+  <wsdl:portType name="RecieveInfoPortType">
+    <wsdl:operation name="deleteVehicleRepair">
+      <wsdl:input wsaw:Action="urn:deleteVehicleRepair" message="ns:deleteVehicleRepairRequest" />
+      <wsdl:output wsaw:Action="urn:deleteVehicleRepairResponse" message="ns:deleteVehicleRepairResponse" />
+      <wsdl:fault wsaw:Action="urn:deleteVehicleRepairITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteTrafficPoliceTicket">
+      <wsdl:input wsaw:Action="urn:deleteTrafficPoliceTicket" message="ns:deleteTrafficPoliceTicketRequest" />
+      <wsdl:output wsaw:Action="urn:deleteTrafficPoliceTicketResponse" message="ns:deleteTrafficPoliceTicketResponse" />
+      <wsdl:fault wsaw:Action="urn:deleteTrafficPoliceTicketITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateVehicleRefuel">
+      <wsdl:input wsaw:Action="urn:updateVehicleRefuel" message="ns:updateVehicleRefuelRequest" />
+      <wsdl:output wsaw:Action="urn:updateVehicleRefuelResponse" message="ns:updateVehicleRefuelResponse" />
+      <wsdl:fault wsaw:Action="urn:updateVehicleRefuelITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteCompanyIncome">
+      <wsdl:input wsaw:Action="urn:deleteCompanyIncome" message="ns:deleteCompanyIncomeRequest" />
+      <wsdl:output wsaw:Action="urn:deleteCompanyIncomeResponse" message="ns:deleteCompanyIncomeResponse" />
+      <wsdl:fault wsaw:Action="urn:deleteCompanyIncomeITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveTBusVehMdtInfo">
+      <wsdl:input wsaw:Action="urn:receiveTBusVehMdtInfo" message="ns:receiveTBusVehMdtInfoRequest" />
+      <wsdl:output wsaw:Action="urn:receiveTBusVehMdtInfoResponse" message="ns:receiveTBusVehMdtInfoResponse" />
+      <wsdl:fault wsaw:Action="urn:receiveTBusVehMdtInfoITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateVehicleRepair">
+      <wsdl:input wsaw:Action="urn:updateVehicleRepair" message="ns:updateVehicleRepairRequest" />
+      <wsdl:output wsaw:Action="urn:updateVehicleRepairResponse" message="ns:updateVehicleRepairResponse" />
+      <wsdl:fault wsaw:Action="urn:updateVehicleRepairITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveVehicleRefuel">
+      <wsdl:input wsaw:Action="urn:receiveVehicleRefuel" message="ns:receiveVehicleRefuelRequest" />
+      <wsdl:output wsaw:Action="urn:receiveVehicleRefuelResponse" message="ns:receiveVehicleRefuelResponse" />
+      <wsdl:fault wsaw:Action="urn:receiveVehicleRefuelITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteVehicleRefuel">
+      <wsdl:input wsaw:Action="urn:deleteVehicleRefuel" message="ns:deleteVehicleRefuelRequest" />
+      <wsdl:output wsaw:Action="urn:deleteVehicleRefuelResponse" message="ns:deleteVehicleRefuelResponse" />
+      <wsdl:fault wsaw:Action="urn:deleteVehicleRefuelITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="main">
+      <wsdl:input wsaw:Action="urn:main" message="ns:mainRequest" />
+      <wsdl:output wsaw:Action="urn:mainResponse" message="ns:mainResponse" />
+      <wsdl:fault wsaw:Action="urn:mainITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteTBusVehMdtInfo">
+      <wsdl:input wsaw:Action="urn:deleteTBusVehMdtInfo" message="ns:deleteTBusVehMdtInfoRequest" />
+      <wsdl:output wsaw:Action="urn:deleteTBusVehMdtInfoResponse" message="ns:deleteTBusVehMdtInfoResponse" />
+      <wsdl:fault wsaw:Action="urn:deleteTBusVehMdtInfoITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteRealArranges">
+      <wsdl:input wsaw:Action="urn:deleteRealArranges" message="ns:deleteRealArrangesRequest" />
+      <wsdl:output wsaw:Action="urn:deleteRealArrangesResponse" message="ns:deleteRealArrangesResponse" />
+      <wsdl:fault wsaw:Action="urn:deleteRealArrangesITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveVehicleRepair">
+      <wsdl:input wsaw:Action="urn:receiveVehicleRepair" message="ns:receiveVehicleRepairRequest" />
+      <wsdl:output wsaw:Action="urn:receiveVehicleRepairResponse" message="ns:receiveVehicleRepairResponse" />
+      <wsdl:fault wsaw:Action="urn:receiveVehicleRepairITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePlanArranges">
+      <wsdl:input wsaw:Action="urn:updatePlanArranges" message="ns:updatePlanArrangesRequest" />
+      <wsdl:output wsaw:Action="urn:updatePlanArrangesResponse" message="ns:updatePlanArrangesResponse" />
+      <wsdl:fault wsaw:Action="urn:updatePlanArrangesITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveRealArrangesChange">
+      <wsdl:input wsaw:Action="urn:receiveRealArrangesChange" message="ns:receiveRealArrangesChangeRequest" />
+      <wsdl:output wsaw:Action="urn:receiveRealArrangesChangeResponse" message="ns:receiveRealArrangesChangeResponse" />
+      <wsdl:fault wsaw:Action="urn:receiveRealArrangesChangeITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="checkuser_password">
+      <wsdl:input wsaw:Action="urn:checkuser_password" message="ns:checkuser_passwordRequest" />
+      <wsdl:output wsaw:Action="urn:checkuser_passwordResponse" message="ns:checkuser_passwordResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePlanArranges">
+      <wsdl:input wsaw:Action="urn:deletePlanArranges" message="ns:deletePlanArrangesRequest" />
+      <wsdl:output wsaw:Action="urn:deletePlanArrangesResponse" message="ns:deletePlanArrangesResponse" />
+      <wsdl:fault wsaw:Action="urn:deletePlanArrangesITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateTBusVehMdtInfo">
+      <wsdl:input wsaw:Action="urn:updateTBusVehMdtInfo" message="ns:updateTBusVehMdtInfoRequest" />
+      <wsdl:output wsaw:Action="urn:updateTBusVehMdtInfoResponse" message="ns:updateTBusVehMdtInfoResponse" />
+      <wsdl:fault wsaw:Action="urn:updateTBusVehMdtInfoITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateCompanyIncome">
+      <wsdl:input wsaw:Action="urn:updateCompanyIncome" message="ns:updateCompanyIncomeRequest" />
+      <wsdl:output wsaw:Action="urn:updateCompanyIncomeResponse" message="ns:updateCompanyIncomeResponse" />
+      <wsdl:fault wsaw:Action="urn:updateCompanyIncomeITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="deleteRealArrangesChange">
+      <wsdl:input wsaw:Action="urn:deleteRealArrangesChange" message="ns:deleteRealArrangesChangeRequest" />
+      <wsdl:output wsaw:Action="urn:deleteRealArrangesChangeResponse" message="ns:deleteRealArrangesChangeResponse" />
+      <wsdl:fault wsaw:Action="urn:deleteRealArrangesChangeITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateTrafficPoliceTicket">
+      <wsdl:input wsaw:Action="urn:updateTrafficPoliceTicket" message="ns:updateTrafficPoliceTicketRequest" />
+      <wsdl:output wsaw:Action="urn:updateTrafficPoliceTicketResponse" message="ns:updateTrafficPoliceTicketResponse" />
+      <wsdl:fault wsaw:Action="urn:updateTrafficPoliceTicketITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveCompanyIncome">
+      <wsdl:input wsaw:Action="urn:receiveCompanyIncome" message="ns:receiveCompanyIncomeRequest" />
+      <wsdl:output wsaw:Action="urn:receiveCompanyIncomeResponse" message="ns:receiveCompanyIncomeResponse" />
+      <wsdl:fault wsaw:Action="urn:receiveCompanyIncomeITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveRealArranges">
+      <wsdl:input wsaw:Action="urn:receiveRealArranges" message="ns:receiveRealArrangesRequest" />
+      <wsdl:output wsaw:Action="urn:receiveRealArrangesResponse" message="ns:receiveRealArrangesResponse" />
+      <wsdl:fault wsaw:Action="urn:receiveRealArrangesITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRealArrangesChange">
+      <wsdl:input wsaw:Action="urn:updateRealArrangesChange" message="ns:updateRealArrangesChangeRequest" />
+      <wsdl:output wsaw:Action="urn:updateRealArrangesChangeResponse" message="ns:updateRealArrangesChangeResponse" />
+      <wsdl:fault wsaw:Action="urn:updateRealArrangesChangeITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="updateRealArranges">
+      <wsdl:input wsaw:Action="urn:updateRealArranges" message="ns:updateRealArrangesRequest" />
+      <wsdl:output wsaw:Action="urn:updateRealArrangesResponse" message="ns:updateRealArrangesResponse" />
+      <wsdl:fault wsaw:Action="urn:updateRealArrangesITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="receiveTrafficPoliceTicket">
+      <wsdl:input wsaw:Action="urn:receiveTrafficPoliceTicket" message="ns:receiveTrafficPoliceTicketRequest" />
+      <wsdl:output wsaw:Action="urn:receiveTrafficPoliceTicketResponse" message="ns:receiveTrafficPoliceTicketResponse" />
+      <wsdl:fault wsaw:Action="urn:receiveTrafficPoliceTicketITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+    <wsdl:operation name="receivePlanArranges">
+      <wsdl:input wsaw:Action="urn:receivePlanArranges" message="ns:receivePlanArrangesRequest" />
+      <wsdl:output wsaw:Action="urn:receivePlanArrangesResponse" message="ns:receivePlanArrangesResponse" />
+      <wsdl:fault wsaw:Action="urn:receivePlanArrangesITSException" name="ITSException" message="ns:ITSException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RecieveInfoSoap11Binding" type="ns:RecieveInfoPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="deleteTrafficPoliceTicket">
+      <soap:operation soapAction="urn:deleteTrafficPoliceTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteVehicleRepair">
+      <soap:operation soapAction="urn:deleteVehicleRepair" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateVehicleRefuel">
+      <soap:operation soapAction="urn:updateVehicleRefuel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCompanyIncome">
+      <soap:operation soapAction="urn:deleteCompanyIncome" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateVehicleRepair">
+      <soap:operation soapAction="urn:updateVehicleRepair" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveTBusVehMdtInfo">
+      <soap:operation soapAction="urn:receiveTBusVehMdtInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveVehicleRefuel">
+      <soap:operation soapAction="urn:receiveVehicleRefuel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteVehicleRefuel">
+      <soap:operation soapAction="urn:deleteVehicleRefuel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="main">
+      <soap:operation soapAction="urn:main" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTBusVehMdtInfo">
+      <soap:operation soapAction="urn:deleteTBusVehMdtInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveVehicleRepair">
+      <soap:operation soapAction="urn:receiveVehicleRepair" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRealArranges">
+      <soap:operation soapAction="urn:deleteRealArranges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updatePlanArranges">
+      <soap:operation soapAction="urn:updatePlanArranges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveRealArrangesChange">
+      <soap:operation soapAction="urn:receiveRealArrangesChange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkuser_password">
+      <soap:operation soapAction="urn:checkuser_password" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePlanArranges">
+      <soap:operation soapAction="urn:deletePlanArranges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTBusVehMdtInfo">
+      <soap:operation soapAction="urn:updateTBusVehMdtInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompanyIncome">
+      <soap:operation soapAction="urn:updateCompanyIncome" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTrafficPoliceTicket">
+      <soap:operation soapAction="urn:updateTrafficPoliceTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRealArrangesChange">
+      <soap:operation soapAction="urn:deleteRealArrangesChange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveCompanyIncome">
+      <soap:operation soapAction="urn:receiveCompanyIncome" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveRealArranges">
+      <soap:operation soapAction="urn:receiveRealArranges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateRealArrangesChange">
+      <soap:operation soapAction="urn:updateRealArrangesChange" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateRealArranges">
+      <soap:operation soapAction="urn:updateRealArranges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveTrafficPoliceTicket">
+      <soap:operation soapAction="urn:receiveTrafficPoliceTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receivePlanArranges">
+      <soap:operation soapAction="urn:receivePlanArranges" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RecieveInfoSoap12Binding" type="ns:RecieveInfoPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="deleteTrafficPoliceTicket">
+      <soap12:operation soapAction="urn:deleteTrafficPoliceTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteVehicleRepair">
+      <soap12:operation soapAction="urn:deleteVehicleRepair" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateVehicleRefuel">
+      <soap12:operation soapAction="urn:updateVehicleRefuel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCompanyIncome">
+      <soap12:operation soapAction="urn:deleteCompanyIncome" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateVehicleRepair">
+      <soap12:operation soapAction="urn:updateVehicleRepair" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveTBusVehMdtInfo">
+      <soap12:operation soapAction="urn:receiveTBusVehMdtInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveVehicleRefuel">
+      <soap12:operation soapAction="urn:receiveVehicleRefuel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteVehicleRefuel">
+      <soap12:operation soapAction="urn:deleteVehicleRefuel" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="main">
+      <soap12:operation soapAction="urn:main" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTBusVehMdtInfo">
+      <soap12:operation soapAction="urn:deleteTBusVehMdtInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveVehicleRepair">
+      <soap12:operation soapAction="urn:receiveVehicleRepair" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRealArranges">
+      <soap12:operation soapAction="urn:deleteRealArranges" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updatePlanArranges">
+      <soap12:operation soapAction="urn:updatePlanArranges" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveRealArrangesChange">
+      <soap12:operation soapAction="urn:receiveRealArrangesChange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="checkuser_password">
+      <soap12:operation soapAction="urn:checkuser_password" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePlanArranges">
+      <soap12:operation soapAction="urn:deletePlanArranges" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTBusVehMdtInfo">
+      <soap12:operation soapAction="urn:updateTBusVehMdtInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompanyIncome">
+      <soap12:operation soapAction="urn:updateCompanyIncome" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateTrafficPoliceTicket">
+      <soap12:operation soapAction="urn:updateTrafficPoliceTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRealArrangesChange">
+      <soap12:operation soapAction="urn:deleteRealArrangesChange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveCompanyIncome">
+      <soap12:operation soapAction="urn:receiveCompanyIncome" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveRealArranges">
+      <soap12:operation soapAction="urn:receiveRealArranges" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateRealArrangesChange">
+      <soap12:operation soapAction="urn:updateRealArrangesChange" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateRealArranges">
+      <soap12:operation soapAction="urn:updateRealArranges" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receiveTrafficPoliceTicket">
+      <soap12:operation soapAction="urn:receiveTrafficPoliceTicket" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="receivePlanArranges">
+      <soap12:operation soapAction="urn:receivePlanArranges" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="ITSException">
+        <soap12:fault use="literal" name="ITSException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="RecieveInfoHttpBinding" type="ns:RecieveInfoPortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="deleteTrafficPoliceTicket">
+      <http:operation location="RecieveInfo/deleteTrafficPoliceTicket" />
+      <wsdl:input>
+        <mime:content part="deleteTrafficPoliceTicket" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="deleteTrafficPoliceTicket" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteVehicleRepair">
+      <http:operation location="RecieveInfo/deleteVehicleRepair" />
+      <wsdl:input>
+        <mime:content part="deleteVehicleRepair" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="deleteVehicleRepair" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateVehicleRefuel">
+      <http:operation location="RecieveInfo/updateVehicleRefuel" />
+      <wsdl:input>
+        <mime:content part="updateVehicleRefuel" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="updateVehicleRefuel" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteCompanyIncome">
+      <http:operation location="RecieveInfo/deleteCompanyIncome" />
+      <wsdl:input>
+        <mime:content part="deleteCompanyIncome" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="deleteCompanyIncome" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateVehicleRepair">
+      <http:operation location="RecieveInfo/updateVehicleRepair" />
+      <wsdl:input>
+        <mime:content part="updateVehicleRepair" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="updateVehicleRepair" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveTBusVehMdtInfo">
+      <http:operation location="RecieveInfo/receiveTBusVehMdtInfo" />
+      <wsdl:input>
+        <mime:content part="receiveTBusVehMdtInfo" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="receiveTBusVehMdtInfo" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveVehicleRefuel">
+      <http:operation location="RecieveInfo/receiveVehicleRefuel" />
+      <wsdl:input>
+        <mime:content part="receiveVehicleRefuel" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="receiveVehicleRefuel" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteVehicleRefuel">
+      <http:operation location="RecieveInfo/deleteVehicleRefuel" />
+      <wsdl:input>
+        <mime:content part="deleteVehicleRefuel" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="deleteVehicleRefuel" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="main">
+      <http:operation location="RecieveInfo/main" />
+      <wsdl:input>
+        <mime:content part="main" type="text/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="deleteTBusVehMdtInfo">
+      <http:operation location="RecieveInfo/deleteTBusVehMdtInfo" />
+      <wsdl:input>
+        <mime:content part="deleteTBusVehMdtInfo" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="deleteTBusVehMdtInfo" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveVehicleRepair">
+      <http:operation location="RecieveInfo/receiveVehicleRepair" />
+      <wsdl:input>
+        <mime:content part="receiveVehicleRepair" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="receiveVehicleRepair" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRealArranges">
+      <http:operation location="RecieveInfo/deleteRealArranges" />
+      <wsdl:input>
+        <mime:content part="deleteRealArranges" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="deleteRealArranges" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePlanArranges">
+      <http:operation location="RecieveInfo/updatePlanArranges" />
+      <wsdl:input>
+        <mime:content part="updatePlanArranges" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="updatePlanArranges" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveRealArrangesChange">
+      <http:operation location="RecieveInfo/receiveRealArrangesChange" />
+      <wsdl:input>
+        <mime:content part="receiveRealArrangesChange" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="receiveRealArrangesChange" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="checkuser_password">
+      <http:operation location="RecieveInfo/checkuser_password" />
+      <wsdl:input>
+        <mime:content part="checkuser_password" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="checkuser_password" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePlanArranges">
+      <http:operation location="RecieveInfo/deletePlanArranges" />
+      <wsdl:input>
+        <mime:content part="deletePlanArranges" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="deletePlanArranges" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTBusVehMdtInfo">
+      <http:operation location="RecieveInfo/updateTBusVehMdtInfo" />
+      <wsdl:input>
+        <mime:content part="updateTBusVehMdtInfo" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="updateTBusVehMdtInfo" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateCompanyIncome">
+      <http:operation location="RecieveInfo/updateCompanyIncome" />
+      <wsdl:input>
+        <mime:content part="updateCompanyIncome" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="updateCompanyIncome" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateTrafficPoliceTicket">
+      <http:operation location="RecieveInfo/updateTrafficPoliceTicket" />
+      <wsdl:input>
+        <mime:content part="updateTrafficPoliceTicket" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="updateTrafficPoliceTicket" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteRealArrangesChange">
+      <http:operation location="RecieveInfo/deleteRealArrangesChange" />
+      <wsdl:input>
+        <mime:content part="deleteRealArrangesChange" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="deleteRealArrangesChange" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveCompanyIncome">
+      <http:operation location="RecieveInfo/receiveCompanyIncome" />
+      <wsdl:input>
+        <mime:content part="receiveCompanyIncome" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="receiveCompanyIncome" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveRealArranges">
+      <http:operation location="RecieveInfo/receiveRealArranges" />
+      <wsdl:input>
+        <mime:content part="receiveRealArranges" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="receiveRealArranges" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRealArrangesChange">
+      <http:operation location="RecieveInfo/updateRealArrangesChange" />
+      <wsdl:input>
+        <mime:content part="updateRealArrangesChange" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="updateRealArrangesChange" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateRealArranges">
+      <http:operation location="RecieveInfo/updateRealArranges" />
+      <wsdl:input>
+        <mime:content part="updateRealArranges" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="updateRealArranges" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receiveTrafficPoliceTicket">
+      <http:operation location="RecieveInfo/receiveTrafficPoliceTicket" />
+      <wsdl:input>
+        <mime:content part="receiveTrafficPoliceTicket" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="receiveTrafficPoliceTicket" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="receivePlanArranges">
+      <http:operation location="RecieveInfo/receivePlanArranges" />
+      <wsdl:input>
+        <mime:content part="receivePlanArranges" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="receivePlanArranges" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RecieveInfo">
+    <wsdl:port name="RecieveInfoHttpSoap11Endpoint" binding="ns:RecieveInfoSoap11Binding">
+      <soap:address location="http://172.16.70.212:9999/fsbus/services/RecieveInfo.RecieveInfoHttpSoap11Endpoint" />
+    </wsdl:port>
+    <wsdl:port name="RecieveInfoHttpSoap12Endpoint" binding="ns:RecieveInfoSoap12Binding">
+      <soap12:address location="http://172.16.70.212:9999/fsbus/services/RecieveInfo.RecieveInfoHttpSoap12Endpoint" />
+    </wsdl:port>
+    <wsdl:port name="RecieveInfoHttpEndpoint" binding="ns:RecieveInfoHttpBinding">
+      <http:address location="http://172.16.70.212:9999/fsbus/services/RecieveInfo.RecieveInfoHttpEndpoint" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

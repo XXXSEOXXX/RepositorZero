@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EmployeeYuanModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityContainer Name="EmployeeYuanModelStoreContainer">
+          <EntitySet Name="订单" EntityType="EmployeeYuanModel.Store.订单" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="订单Detail" EntityType="EmployeeYuanModel.Store.订单Detail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="物料资料" EntityType="EmployeeYuanModel.Store.物料资料" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_订单Detail_订单" Association="EmployeeYuanModel.Store.FK_订单Detail_订单">
+            <End Role="订单" EntitySet="订单" />
+            <End Role="订单Detail" EntitySet="订单Detail" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="订单">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="订单号" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="订单Detail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="订单ID" Type="int" />
+          <Property Name="单号" Type="varchar" MaxLength="10" />
+          <Property Name="物料编号" Type="varchar" MaxLength="10" />
+          <Property Name="物料名称" Type="varchar" MaxLength="50" />
+          <Property Name="单位" Type="varchar" MaxLength="10" />
+          <Property Name="数量" Type="int" />
+          <Property Name="单价" Type="decimal" Scale="2" />
+          <Property Name="金额" Type="decimal" Scale="2" />
+          <Property Name="备注" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="物料资料">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="物料编号" Type="varchar" MaxLength="10" />
+          <Property Name="物料名称" Type="varchar" MaxLength="10" />
+          <Property Name="单位" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK_订单Detail_订单">
+          <End Role="订单" Type="EmployeeYuanModel.Store.订单" Multiplicity="0..1" />
+          <End Role="订单Detail" Type="EmployeeYuanModel.Store.订单Detail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="订单">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="订单Detail">
+              <PropertyRef Name="订单ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EmployeeYuanModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityContainer Name="Entities">
+          <EntitySet Name="订单" EntityType="EmployeeYuanModel.订单" />
+          <EntitySet Name="订单Detail" EntityType="EmployeeYuanModel.订单Detail" />
+          <EntitySet Name="物料资料" EntityType="EmployeeYuanModel.物料资料" />
+          <AssociationSet Name="FK_订单Detail_订单" Association="EmployeeYuanModel.FK_订单Detail_订单">
+            <End Role="订单" EntitySet="订单" />
+            <End Role="订单Detail" EntitySet="订单Detail" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="订单">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="订单号" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="订单Detail" Relationship="EmployeeYuanModel.FK_订单Detail_订单" FromRole="订单" ToRole="订单Detail" />
+        </EntityType>
+        <EntityType Name="订单Detail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="单号" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="物料编号" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="物料名称" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="单位" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="数量" Type="Int32" />
+          <Property Name="单价" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="金额" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="备注" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="订单" Relationship="EmployeeYuanModel.FK_订单Detail_订单" FromRole="订单Detail" ToRole="订单" />
+        </EntityType>
+        <EntityType Name="物料资料">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="物料编号" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="物料名称" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="单位" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_订单Detail_订单">
+          <End Role="订单" Type="EmployeeYuanModel.订单" Multiplicity="0..1" />
+          <End Role="订单Detail" Type="EmployeeYuanModel.订单Detail" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="EmployeeYuanModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="订单">
+            <EntityTypeMapping TypeName="IsTypeOf(EmployeeYuanModel.订单)">
+              <MappingFragment StoreEntitySet="订单">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="订单号" ColumnName="订单号" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="订单Detail">
+            <EntityTypeMapping TypeName="IsTypeOf(EmployeeYuanModel.订单Detail)">
+              <MappingFragment StoreEntitySet="订单Detail">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="单号" ColumnName="单号" />
+                <ScalarProperty Name="物料编号" ColumnName="物料编号" />
+                <ScalarProperty Name="物料名称" ColumnName="物料名称" />
+                <ScalarProperty Name="单位" ColumnName="单位" />
+                <ScalarProperty Name="数量" ColumnName="数量" />
+                <ScalarProperty Name="单价" ColumnName="单价" />
+                <ScalarProperty Name="金额" ColumnName="金额" />
+                <ScalarProperty Name="备注" ColumnName="备注" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="物料资料">
+            <EntityTypeMapping TypeName="IsTypeOf(EmployeeYuanModel.物料资料)">
+              <MappingFragment StoreEntitySet="物料资料">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="物料编号" ColumnName="物料编号" />
+                <ScalarProperty Name="物料名称" ColumnName="物料名称" />
+                <ScalarProperty Name="单位" ColumnName="单位" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_订单Detail_订单" TypeName="EmployeeYuanModel.FK_订单Detail_订单" StoreEntitySet="订单Detail">
+            <EndProperty Name="订单">
+              <ScalarProperty Name="ID" ColumnName="订单ID" />
+            </EndProperty>
+            <EndProperty Name="订单Detail">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <Condition ColumnName="订单ID" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="EmployeeYuanModel.订单" Width="1.5" PointX="0.75" PointY="1.625" Height="1.5879931640625002" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeeYuanModel.订单Detail" Width="1.5" PointX="3" PointY="1" Height="2.9251310221354165" IsExpanded="true" />
+        <EntityTypeShape EntityType="EmployeeYuanModel.物料资料" Width="1.5" PointX="0.75" PointY="4.75" Height="1.7790128580729174" IsExpanded="true" />
+        <AssociationConnector Association="EmployeeYuanModel.FK_订单Detail_订单" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="2.4189965820312502" />
+          <ConnectorPoint PointX="3" PointY="2.4189965820312502" /></AssociationConnector></Diagram></edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
