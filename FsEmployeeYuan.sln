@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{2E0A3E7C-C586-48E2-873E-34F54A68C5CF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureTest", "AzureTest\AzureTest.csproj", "{8EA27D99-C468-4B6A-932A-81843C42260F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{2E0A3E7C-C586-48E2-873E-34F54A68C5CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E0A3E7C-C586-48E2-873E-34F54A68C5CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E0A3E7C-C586-48E2-873E-34F54A68C5CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EA27D99-C468-4B6A-932A-81843C42260F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EA27D99-C468-4B6A-932A-81843C42260F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EA27D99-C468-4B6A-932A-81843C42260F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EA27D99-C468-4B6A-932A-81843C42260F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
