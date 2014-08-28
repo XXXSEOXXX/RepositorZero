@@ -55,7 +55,8 @@ namespace AzureTest
                         Console.WriteLine("The input is not currect,plase try again .\n");
                         int.TryParse(Console.ReadLine(), out ci);
                     }
-                    comp.core = ci-1;
+                    comp.core = ci;
+                    comp.coreStatus = new int[ci];
 
                     computers.Add(comp);
                 }
@@ -92,10 +93,20 @@ namespace AzureTest
                 Console.WriteLine(string.Format("Case #{0}:\n",ti.ToString()));
                 for (int qi = 0; qi < q; qi++)
                 {
-
+                    var rTemp = requests.Where(z => z.tID == ti && z.reqID == qi).FirstOrDefault();
+                    string str=Solution(rTemp);
                 }
             }
 
+        }
+
+        private static string Solution(Request rTemp)
+        {
+            if(rTemp.reqType=='A')
+            {
+
+            }
+            return "";
         }
 
         private static bool CheckT(int input)
@@ -140,6 +151,7 @@ namespace AzureTest
         public int compID;//机器ID
         public int core;//核心数
         public int used;//已使用核心数
+        public int[] coreStatus;//核心使用状况
     }
 
     class Request
@@ -155,7 +167,6 @@ namespace AzureTest
         public int tID;//测试ID
         public int reqID;//请求ID
         public int compID;//机器ID
-        public int coreID;//核心ID
-        public int coreUsed;//使用核心数
+        public int[] coreused;//占用的核心编号
     }
 }
