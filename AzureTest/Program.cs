@@ -67,6 +67,7 @@ namespace AzureTest
                     computers.Add(comp);
                 }
 
+                SortList(computers);
                 Console.WriteLine(string.Format("Plase enter {0} requests:",q.ToString()));
 
                 for (int qi = 0; qi < q; qi++)
@@ -122,11 +123,14 @@ namespace AzureTest
             string restr = "";
             if (rTemp.reqType == 'A')
             {
-                //int k = 0;
+                int k = 0;
                 foreach (Computer cpt in comList)
                 {
                     if (cpt.core - cpt.used < rTemp.reqNum || cpt.tID != rTemp.tID)
+                    {
+                        k = k + 1;
                         continue;
+                    }
 
                     int rq = rTemp.reqNum;
                     Record rec = new Record();
@@ -149,6 +153,7 @@ namespace AzureTest
                     }
                     reList. Add(rec);
                     restr = string.Format("{0} {1}", rec.compID.ToString(), rec.coreused[0].ToString());
+                    SortDescending(comList, k);
                     break;
                 }
             }
@@ -157,13 +162,24 @@ namespace AzureTest
                 var rec2 = reList.Where(z => z.tID == rTemp.tID && z.reqID == rTemp.reqNum).FirstOrDefault();
                 if (rec2 != null)
                 {
-                    var tgcomp = comList.Where(tg => tg.tID == rec2.tID && tg.compID == rec2.compID).FirstOrDefault();
-                    foreach (int reused in rec2.coreused)
+                    int k = 0;
+                    foreach (Computer cpt in comList)
                     {
-                        tgcomp.coreStatus[reused] = 0;
-                        tgcomp.used = tgcomp.used - 1;
+                        if (cpt.tID != rec2.tID || cpt.compID != rec2.compID)
+                        {
+                            k = k + 1;
+                            continue;
+                        }
+
+                        foreach (int reused in rec2.coreused)
+                        {
+                            cpt.coreStatus[reused] = 0;
+                            cpt.used = cpt.used - 1;
+                        }
+                        restr = string.Format("{0} {1}", cpt.compID.ToString(), rec2.coreused[0].ToString());
+                        SortAcscending(comList, k);
+                        break;
                     }
-                    restr = string.Format("{0} {1}",tgcomp.compID.ToString(),rec2.coreused[0].ToString());
                 }
             }
 
@@ -171,6 +187,50 @@ namespace AzureTest
                 restr = "-1 -1";
             return restr;
         }
+
+        private static void SortList(List<Computer> clist)
+        {
+            Computer cpt = new Computer();
+            for (int i = 1; i < clist.Count; i++)
+            {
+                for (int j = i; j > 0; j--)
+                {
+                    if (clist[j].core - clist[j].used >= clist[j - 1].core - clist[j - 1].used)
+                        break;
+
+                    cpt = clist[j - 1];
+                    clist[j - 1] = clist[j];
+                    clist[j] = cpt;
+                }
+            }
+        }
+
+        private static void SortAcscending(List<Computer> clist,int index)
+        {
+            Computer cpt = new Computer();
+            for (; index < clist.Count-1; index++)
+            {
+                if (clist[index].core - clist[index].used <= clist[index + 1].core - clist[index + 1].used)
+                    break;
+                cpt = clist[index + 1];
+                clist[index + 1] = clist[index];
+                clist[index] = cpt;
+            }
+        }
+
+        private static void SortDescending(List<Computer> clist, int index)
+        {
+            Computer cpt = new Computer();
+            for (; index > 0;index--)
+            {
+                if (clist[index].core - clist[index].used > clist[index - 1].core - clist[index - 1].used)
+                    break;
+                cpt = clist[index - 1];
+                clist[index - 1] = clist[index];
+                clist[index] = cpt;
+            }
+        }
+
 
         private static bool CheckT(int input)
         {
@@ -231,8 +291,6 @@ namespace AzureTest
         public int core;//核心数
         public int used;//已使用核心数
         public int[] coreStatus;//核心使用状况
-
-        public int rank;//优先级别
     }
 
     class Request
