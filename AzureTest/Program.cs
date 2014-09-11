@@ -12,6 +12,7 @@ namespace AzureTest
             int t = 0;
             int m = 0;
             int q = 0;
+            int[] qa;
 
             List<Computer> computers = new List<Computer>();
             List<Request> requests = new List<Request>();
@@ -24,6 +25,9 @@ namespace AzureTest
                 Console.WriteLine("The input is not currect,plase try again .");
                 int.TryParse(Console.ReadLine(), out t);
             }
+
+            qa = new int[t];
+
             for (int i = 0; i < t; i++)
             {
                 Console.WriteLine("Plase enter the number of computer and the number of request:");
@@ -36,6 +40,7 @@ namespace AzureTest
                 int.TryParse(str.Split(new char[] { ' ' })[0], out m);
                 int.TryParse(str.Split(new char[] { ' ' })[1], out q);
 
+                qa[i] = q;
                 //while (CheckM(m) || CheckQ(q))
                 //{
                 //    Console.WriteLine("The input is not currect,plase try again .");
@@ -67,7 +72,7 @@ namespace AzureTest
                     computers.Add(comp);
                 }
 
-                SortList(computers);
+                SortList(computers,i);
                 Console.WriteLine(string.Format("Plase enter {0} requests:",q.ToString()));
 
                 for (int qi = 0; qi < q; qi++)
@@ -106,11 +111,17 @@ namespace AzureTest
             for (int ti = 0; ti < t; ti++)
             {
                 Console.WriteLine(string.Format("Case #{0}:\n",ti.ToString()));
-                for (int qi = 0; qi < q; qi++)
+                for (int qi = 0; qi < qa[ti]; qi++)
                 {
                     var rTemp = requests.Where(z => z.tID == ti && z.reqID == qi).FirstOrDefault();
                     string str=Solution(rTemp,computers,records);
                     Console.WriteLine(str + "\n");
+                    foreach (Computer cpt in computers)
+                    {
+                        if (cpt.tID != ti)
+                            continue;
+                        Console.WriteLine("Computer ID: " + cpt.compID+" Core:"+cpt.core+" Core used:"+cpt.used);
+                    }
                 }
             }
             Console.ReadLine();
@@ -153,7 +164,7 @@ namespace AzureTest
                     }
                     reList. Add(rec);
                     restr = string.Format("{0} {1}", rec.compID.ToString(), rec.coreused[0].ToString());
-                    SortDescending(comList, k);
+                    SortDescending(comList, k,rTemp.tID);
                     break;
                 }
             }
@@ -177,7 +188,7 @@ namespace AzureTest
                             cpt.used = cpt.used - 1;
                         }
                         restr = string.Format("{0} {1}", cpt.compID.ToString(), rec2.coreused[0].ToString());
-                        SortAcscending(comList, k);
+                        SortAcscending(comList, k,rTemp.tID);
                         break;
                     }
                 }
@@ -188,13 +199,15 @@ namespace AzureTest
             return restr;
         }
 
-        private static void SortList(List<Computer> clist)
+        private static void SortList(List<Computer> clist,int tid)
         {
             Computer cpt = new Computer();
             for (int i = 1; i < clist.Count; i++)
             {
                 for (int j = i; j > 0; j--)
                 {
+                    if (clist[j].tID != tid)
+                        continue;
                     if (clist[j].core - clist[j].used >= clist[j - 1].core - clist[j - 1].used)
                         break;
 
@@ -205,11 +218,13 @@ namespace AzureTest
             }
         }
 
-        private static void SortAcscending(List<Computer> clist,int index)
+        private static void SortAcscending(List<Computer> clist,int index,int tid)
         {
             Computer cpt = new Computer();
             for (; index < clist.Count-1; index++)
             {
+                if (clist[index].tID != tid)
+                    continue;
                 if (clist[index].core - clist[index].used <= clist[index + 1].core - clist[index + 1].used)
                     break;
                 cpt = clist[index + 1];
@@ -218,11 +233,13 @@ namespace AzureTest
             }
         }
 
-        private static void SortDescending(List<Computer> clist, int index)
+        private static void SortDescending(List<Computer> clist, int index,int tid)
         {
             Computer cpt = new Computer();
             for (; index > 0;index--)
             {
+                if (clist[index].tID != tid)
+                    continue;
                 if (clist[index].core - clist[index].used > clist[index - 1].core - clist[index - 1].used)
                     break;
                 cpt = clist[index - 1];
@@ -275,8 +292,7 @@ namespace AzureTest
 
         private static bool CheckReqNum(string input)
         {
-            int r = 0
-                ;
+            int r = 0;
             int.TryParse(input, out r);
             if (r < 0 || r > 128)
                 return true;
