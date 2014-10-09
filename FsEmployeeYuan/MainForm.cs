@@ -27,6 +27,7 @@ namespace FsEmployeeYuan
             comboBox1.Items.Add("Form8");
             comboBox1.Items.Add("Form9");
             comboBox1.Items.Add("Form10");
+            comboBox1.Items.Add("Form11");
             this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             this.comboBox1.BackColor = Color.White;
             this.comboBox1.Enabled = true;
@@ -78,6 +79,36 @@ namespace FsEmployeeYuan
             {
                 Form10 frm = new Form10();
                 frm.Show();
+            }
+            if (comboBox1.Text == "Form11")
+            {
+                Form11 frm = new Form11();
+                frm.Show();
+            }
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (textBox1.Text.Trim() == "")
+                return;
+            if (e.KeyChar == 13)
+            {
+                try
+                {
+                    Type myType = Type.GetType("FsEmployeeYuan.Form" + textBox1.Text.Trim());
+                    object obj = Activator.CreateInstance(myType);
+                    if (obj is Form)
+                    {
+                        Form form = (Form)obj;
+                        //form.Name = "Form" + textBox1.Text.Trim();
+                        form.ShowInTaskbar = false;
+                        form.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
     }
