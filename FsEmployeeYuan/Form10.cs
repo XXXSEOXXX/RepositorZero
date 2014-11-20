@@ -20,7 +20,7 @@ namespace FsEmployeeYuan
         }
 
         Entities ef = new Entities();
-        SqliteTest lef = new SqliteTest();
+        //SqliteTest lef = new SqliteTest();
         int i = 2;
         private void button1_Click(object sender, EventArgs e)
         {

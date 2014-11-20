@@ -101,8 +101,8 @@ namespace FsEmployeeYuan
                     {
                         Form form = (Form)obj;
                         //form.Name = "Form" + textBox1.Text.Trim();
-                        form.ShowInTaskbar = false;
-                        form.Show();
+                        //form.ShowInTaskbar = false;
+                        form.ShowDialog();
                     }
                 }
                 catch (Exception ex)

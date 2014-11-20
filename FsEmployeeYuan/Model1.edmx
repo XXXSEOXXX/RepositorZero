@@ -1,19 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EmployeeYuanModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+    <Schema Namespace="EmployeeYuanModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="EmployeeYuanModelStoreContainer">
-          <EntitySet Name="订单" EntityType="EmployeeYuanModel.Store.订单" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="订单Detail" EntityType="EmployeeYuanModel.Store.订单Detail" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="物料资料" EntityType="EmployeeYuanModel.Store.物料资料" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="T_test_Linq" EntityType="EmployeeYuanModel.Store.T_test_Linq" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="订单" EntityType="EmployeeYuanModel.Store.订单" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="订单Detail" EntityType="EmployeeYuanModel.Store.订单Detail" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="物料资料" EntityType="EmployeeYuanModel.Store.物料资料" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_订单Detail_订单" Association="EmployeeYuanModel.Store.FK_订单Detail_订单">
             <End Role="订单" EntitySet="订单" />
             <End Role="订单Detail" EntitySet="订单Detail" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="T_test_Linq">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="20" />
+          <Property Name="Sex" Type="varchar" MaxLength="10" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Address" Type="varchar" MaxLength="150" />
+          <Property Name="Telephone" Type="varchar" MaxLength="20" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="订单">
           <Key>
             <PropertyRef Name="ID" />
@@ -57,11 +70,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EmployeeYuanModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+      <Schema Namespace="EmployeeYuanModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Entities">
           <EntitySet Name="订单" EntityType="EmployeeYuanModel.订单" />
           <EntitySet Name="订单Detail" EntityType="EmployeeYuanModel.订单Detail" />
@@ -70,7 +82,7 @@
             <End Role="订单" EntitySet="订单" />
             <End Role="订单Detail" EntitySet="订单Detail" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="T_test_Linq" EntityType="EmployeeYuanModel.T_test_Linq" /></EntityContainer>
         <EntityType Name="订单">
           <Key>
             <PropertyRef Name="ID" />
@@ -107,11 +119,20 @@
           <End Role="订单" Type="EmployeeYuanModel.订单" Multiplicity="0..1" />
           <End Role="订单Detail" Type="EmployeeYuanModel.订单Detail" Multiplicity="*" />
         </Association>
-      </Schema>
+        <EntityType Name="T_test_Linq">
+          <Key>
+            <PropertyRef Name="ID" /></Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="true" />
+          <Property Name="Sex" Type="String" Nullable="true" />
+          <Property Name="Age" Type="Int32" Nullable="true" />
+          <Property Name="Address" Type="String" Nullable="true" />
+          <Property Name="Telephone" Type="String" Nullable="true" />
+          <Property Name="Email" Type="String" Nullable="true" /></EntityType></Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="EmployeeYuanModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="订单">
             <EntityTypeMapping TypeName="IsTypeOf(EmployeeYuanModel.订单)">
@@ -155,30 +176,40 @@
             </EndProperty>
             <Condition ColumnName="订单ID" IsNull="false" />
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="T_test_Linq">
+            <EntityTypeMapping TypeName="IsTypeOf(EmployeeYuanModel.T_test_Linq)">
+              <MappingFragment StoreEntitySet="T_test_Linq">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" /></MappingFragment></EntityTypeMapping></EntitySetMapping></EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:Designer>
     <edmx:Connection>
-      <DesignerInfoPropertySet>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
       </DesignerInfoPropertySet>
     </edmx:Connection>
     <edmx:Options>
-      <DesignerInfoPropertySet>
+      <DesignerInfoPropertySet xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram Name="Model1">
+      <Diagram Name="Model1" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
         <EntityTypeShape EntityType="EmployeeYuanModel.订单" Width="1.5" PointX="0.75" PointY="1.625" Height="1.5879931640625002" IsExpanded="true" />
         <EntityTypeShape EntityType="EmployeeYuanModel.订单Detail" Width="1.5" PointX="3" PointY="1" Height="2.9251310221354165" IsExpanded="true" />
         <EntityTypeShape EntityType="EmployeeYuanModel.物料资料" Width="1.5" PointX="0.75" PointY="4.75" Height="1.7790128580729174" IsExpanded="true" />
         <AssociationConnector Association="EmployeeYuanModel.FK_订单Detail_订单" ManuallyRouted="false">
           <ConnectorPoint PointX="2.25" PointY="2.4189965820312502" />
-          <ConnectorPoint PointX="3" PointY="2.4189965820312502" /></AssociationConnector></Diagram></edmx:Diagrams>
+          <ConnectorPoint PointX="3" PointY="2.4189965820312502" /></AssociationConnector>
+        <EntityTypeShape EntityType="EmployeeYuanModel.T_test_Linq" Width="1.5" PointX="3.375" PointY="4.75" Height="2.3520719401041674" /></Diagram></edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -1,15 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1FsEmployeeYuan", "FsEmployeeYuan\1FsEmployeeYuan.csproj", "{4C17D8DE-9A1C-468D-A1CF-2811667E8798}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1ConsoleApplication1", "ConsoleApplication1\1ConsoleApplication1.csproj", "{00A9C601-9DD7-4D9D-B1F0-FD5199F6E932}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{247B1B9A-6943-4908-9B29-D77B4FF48307}"
 	ProjectSection(SolutionItems) = preProject
 		FsEmployeeYuan.vsmdi = FsEmployeeYuan.vsmdi
 		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1FsEmployeeYuan", "FsEmployeeYuan\1FsEmployeeYuan.csproj", "{4C17D8DE-9A1C-468D-A1CF-2811667E8798}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1ConsoleApplication1", "ConsoleApplication1\1ConsoleApplication1.csproj", "{00A9C601-9DD7-4D9D-B1F0-FD5199F6E932}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{2DD210CC-C723-406B-B996-5346C539FA1B}"
 EndProject
@@ -18,6 +18,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureTest", "AzureTest\AzureTest.csproj", "{8EA27D99-C468-4B6A-932A-81843C42260F}"
 EndProject
 Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = FsEmployeeYuan.vsmdi
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU

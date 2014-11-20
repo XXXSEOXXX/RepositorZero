@@ -22,6 +22,7 @@ namespace FsEmployeeYuan
             richTextBox1.Text = GetPhysicalMemory();
             richTextBox1.Text += GetCPUID();
             richTextBox1.Text += GetHardDisk();
+            richTextBox1.Text += GetMotherBoard();
         }
 
         private string GetCPUID()
@@ -75,6 +76,25 @@ namespace FsEmployeeYuan
                     strMemory += mo["Model"].ToString() + "\n";
                 }
                 return strMemory;
+            }
+            catch
+            {
+                return "";
+            }
+        }
+
+        private string GetMotherBoard()
+        {
+            try
+            {
+                ManagementClass mc = new ManagementClass("Win32_BaseBoard");
+                ManagementObjectCollection moc = mc.GetInstances();
+                string strMoBo = "";
+                foreach (ManagementObject mo in moc)
+                {
+                    strMoBo += mo["Product"].ToString() + "\n";
+                }
+                return strMoBo;
             }
             catch
             {
