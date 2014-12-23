@@ -27,6 +27,7 @@ namespace Server
             if (T.BoolCalue)
             {
                 T.HowMany = T.HowMany - Num;
+                T.BoolCalue = true;
                 return 1;
             }
             else

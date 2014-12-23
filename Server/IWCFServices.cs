@@ -26,8 +26,8 @@ namespace Server
     [DataContract] //数据契约 
     public class Ticket
     {
-        bool boolCount = true;//判断是否还有车票 
-        int howmany = 10;//还有多少车票 
+        static bool boolCount = true;//判断是否还有车票 
+        static int howmany = 10;//还有多少车票 
         [DataMember]
         /*判断是否还有票*/
         public bool BoolCalue
@@ -35,7 +35,7 @@ namespace Server
             get { return boolCount; }
             set
             {
-                if (HowMany > 0)
+                if (HowMany <= 0)
                 {
                     boolCount = false;
                 }

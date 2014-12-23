@@ -121,8 +121,9 @@ namespace FsEmployeeYuan
                 {
                     for (int i = 0; i < 5; i++)
                     {
+                        string message = string.Format("异步循环显示序号：{0},时间:{1}\n", i.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                         Thread.Sleep(1000);
-                        OutputToRichtext(i);
+                        OutputToRichtext(message);
                     }
                 });
 
@@ -140,15 +141,148 @@ namespace FsEmployeeYuan
             //rtxt.Text = msg;
         }
 
-        private void OutputToRichtext(int i)
+        private void OutputToRichtext(string msg)
         {
             if (rtxt.InvokeRequired)
             {
-                MethodInvoker mi = delegate { OutputToRichtext(i); };
+                MethodInvoker mi = delegate { OutputToRichtext(msg); };
                 rtxt.Invoke(mi);
                 return;
             }
-            rtxt.Text += string.Format("异步循环显示序号：{0},时间:{1}\n", i.ToString(), DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+            rtxt.Text += msg;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            rtxt.Text = "";
+            Task task = new Task(() =>
+                {
+                    for (int i = 0; i < 10; i++)
+                    {
+                        string message= string.Format("Index:{0},ThreadID:{1}\n", i, Thread.CurrentThread.ManagedThreadId);
+                        OutputToRichtext(message);
+                        Thread.Sleep(1000);
+                    }
+                });
+
+            task.ContinueWith(t =>
+                {
+                    string message= string.Format("执行完毕!,ThreadID:{0}\n", Thread.CurrentThread.ManagedThreadId);
+                    OutputToRichtext(message);
+                }
+            );
+            task.Start();
+            Awaiter();
+        }
+
+        private async void Awaiter()
+        {
+            string message = string.Format("主线程执行完毕!ThreadID:{0}", Thread.CurrentThread.ManagedThreadId);
+            await SleepFunc();
+            OutputToRichtext(message);
+        }
+
+        private Task SleepFunc()
+        {
+            return Task.Run(()=>Thread.Sleep(11000));
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            Image pic=SmallPic(@"C:\Users\cake\Desktop\p2182583413.jpg", @"C:\Users\cake\Desktop\p1.jpg", picBox1.Width);
+            picBox1.Image = pic;
+        }
+
+        /// <summary>
+        /// 按比例缩小图片，自动调整高度
+        /// </summary>
+        /// <param name="stroldPic">原图片路径和文件名</param>
+        /// <param name="strnewPic">缩小后图片保存路径和文件名</param>
+        /// <param name="intWidth">缩小的宽度</param>
+        public Image SmallPic(string stroldPic, string strnewPic, int intWidth)
+        {
+            Bitmap objPic, objnewPic;
+            try
+            {
+                objPic = new Bitmap(stroldPic);
+                decimal decHeight = Convert.ToDecimal(intWidth)/Convert.ToDecimal(objPic.Width)*objPic.Height;
+                int intHeight = Convert.ToInt16(decHeight);
+                objnewPic = new Bitmap(objPic, intWidth, intHeight);
+                return objnewPic;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                objPic = null;
+                objnewPic = null;
+            }
+        }
+
+        BackgroundWorker bw = null;
+        ManualResetEvent mr = new ManualResetEvent(true);
+        private void button5_Click(object sender, EventArgs e)
+        {
+            rtxt.Text = null;
+            bw = new BackgroundWorker();
+            bw.WorkerSupportsCancellation = true;
+            bw.WorkerReportsProgress = true;    
+            bw.DoWork +=new DoWorkEventHandler(bw_DoWork);
+            bw.RunWorkerCompleted += new RunWorkerCompletedEventHandler(bw_RunWorkerCompleted);
+            bw.ProgressChanged += (s, args) =>
+            {
+                rtxt.AppendText(string.Format("Thread is running :{0}%", args.ProgressPercentage) + Environment.NewLine);
+                progressBar1.Value = args.ProgressPercentage;
+            };
+            bw.RunWorkerAsync();
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+            Button b = (Button)sender;
+            if (b.Text == "Pause")
+            {
+                mr.Reset();
+                b.Text = "Continue";
+            }
+            else
+            {
+                mr.Set();
+                b.Text = "Pause";
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            bw.CancelAsync();
+        }
+
+        private void bw_DoWork(object sender, DoWorkEventArgs e)
+        {
+            for (int i = 0; i <=100; i++)
+            {
+                if (bw.CancellationPending)
+                {
+                    e.Cancel = true;
+                    return;
+                }
+                Thread.Sleep(500);
+                bw.ReportProgress(i, 0);
+            }
+        }
+
+        private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                rtxt.Text += "The thread has stopped";
+            }
+            else
+            {
+                rtxt.Text += "The thread has finished";
+            }
         }
     }
 }
