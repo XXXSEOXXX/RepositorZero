@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Management;
+using System.Runtime.InteropServices;
+using System.Web;
 
 namespace FsEmployeeYuan
 {
@@ -70,7 +72,7 @@ namespace FsEmployeeYuan
             {
                 ManagementClass mc = new ManagementClass("Win32_DiskDrive");
                 ManagementObjectCollection moc = mc.GetInstances();
-                string strMemory = "";
+                string strMemory = string.Empty;
                 foreach (ManagementObject mo in moc)
                 {
                     strMemory += mo["Model"].ToString() + "\n";

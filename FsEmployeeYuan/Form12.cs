@@ -283,6 +283,19 @@ namespace FsEmployeeYuan
             {
                 rtxt.Text += "The thread has finished";
             }
+            Stack<int> a = new Stack<int>(10);
+            MessageBox.Show(a.Pop().ToString());
+        }
+
+        public class Stack<T>
+        {
+            public T[] m_item;
+            public T Pop() { T t = default(T); return t; }
+            public T Push(T item) { return item; }
+            public Stack(int i)
+            {
+                m_item = new T[i];
+            }
         }
     }
 }
